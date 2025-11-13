@@ -249,8 +249,9 @@
       fctx.restore();
 
       // Now slice the large canvas into A4 pages (with margins). Everything above is in point units scaled by userScale.
-      const marginPx = marginPt * userScale;
-      const tileW = Math.floor((pageWidth - marginPt * 2) * 1); // pageWidth in points, we'll use px coordinates of page canvas
+      const marginPx = marginPt * userScale; // tileW/tileH must be expressed in canvas pixels — multiply the printable page area (points) by userScale const tileW = Math.floor((pageWidth - marginPt * 2) * userScale); const tileH = Math.floor((pageHeight - marginPt * 2) * userScale);
+
+Suggested commit details
       const tileH = Math.floor((pageHeight - marginPt * 2) * 1);
       // the draw offset in px when drawing the portion is marginPx
       let pageNum = 1;
